@@ -55,6 +55,7 @@ const App = () => {
           w={"100%"}
           p={"2vh"}
           fontSize={"2vh"}
+          m={"1vh"}
         />
         <Input
           variant="flushed"
@@ -65,6 +66,7 @@ const App = () => {
           w={"100%"}
           p={"2vh"}
           fontSize={"2vh"}
+          m={"1vh"}
         />
         {/* <div>
         <label>Task Name:</label>
