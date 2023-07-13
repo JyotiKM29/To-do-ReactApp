@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Task from "./Task";
+import "./App.css";
+import { Heading ,Input } from "@chakra-ui/react";
+
+
 
 const App = () => {
   //Initaialing with local value
@@ -14,10 +18,11 @@ const App = () => {
   const handleChange = (e) => {
     e.preventDefault();
 
-    setTasks([...tasks, { title, description }]);
-
-    setTitle("");
-    setDescription("");
+    if (title.trim() !== "" && description.trim() !== "") {
+      setTasks([...tasks, { title, description }]);
+      setTitle("");
+      setDescription("");
+    }
   };
 
   //   Saving in Local Storage
@@ -27,24 +32,49 @@ const App = () => {
 
   //   delete task
   const deleteTask = (index) => {
-    const filtrArray = tasks.filter((val , i) => {return i !== index} );
+    const filtrArray = tasks.filter((val, i) => {
+      return i !== index;
+    });
 
     setTasks(filtrArray);
   };
 
   return (
-    <div>
-      <h1>To-do List</h1>
+    <div className="main">
+      <Heading as="h1" size="4xl" p={"1vh"}  alignItems={'center'} >
+        Tasks
+      </Heading>
       <form onSubmit={handleChange}>
-        <div>
-          <label>Task Name:</label>
+        
+        <Input
+          variant="flushed"
+          placeholder="Task Name"
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          w={"100%"}
+          p={"2vh"}
+          fontSize={"2vh"}
+        />
+        <Input
+          variant="flushed"
+          placeholder="Description"
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          w={"100%"}
+          p={"2vh"}
+          fontSize={"2vh"}
+        />
+        {/* <div>
+        <label>Task Name:</label>
           <input
             type="text"
             placeholder="heading"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-          ></input>
-        </div>
+          ></input> */}
+        {/* </div>
         <div>
           <label>Description:</label>
           <input
@@ -53,8 +83,10 @@ const App = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></input>
-        </div>
-        <button type="submit">Add</button>
+        </div> */}
+      
+       <button className="btn" type="submit">Add</button>
+ 
       </form>
       {tasks.map((task, index) => (
         <Task
