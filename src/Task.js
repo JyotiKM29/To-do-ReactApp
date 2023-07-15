@@ -1,9 +1,8 @@
 import React from "react";
 import './App.css'
 import { Text } from "@chakra-ui/layout";
-// import { Icon } from '@chakra-ui/react'
-import { DeleteIcon } from "@chakra-ui/icons";
-import { Button , ButtonGroup } from "@chakra-ui/button";
+
+
 
 
 const Task = ({ Title, Description, deleteTask, index }) => {
